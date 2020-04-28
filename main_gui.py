@@ -10,7 +10,7 @@ class MainUI:
     @classmethod
     def main_ui(cls):
         res_id = 0
-        res_y = 46
+        res_y = 60
         if MainUI.main_ui_active:
 
             #   MAIN UI HEADER
@@ -34,12 +34,12 @@ class MainUI:
             pyxel.text(4, 20, p.name, 1)
             pyxel.text(4, 30, f"Population: {p.population}", 1)
             pyxel.text(4, 38, f"Prestige: {p.prestige}", 1)
+            pyxel.rect(0, 48, 79, 9, 1)
+            pyxel.text(4, 50, "RESOURCES", 0)
             for resource in resources.res_list:
-                if res_id <= len(resources.res_list):
-                    if resources.res_list[res_id].stored > 0:
-                        pyxel.text(4, res_y, f"{resources.res_list[res_id].name}: {resources.res_list[res_id].stored}", 1)
-                        res_id += 1
-                        res_y += 8
+                if resource.stored > 0:
+                    pyxel.text(4, res_y, f"{resource.name}: {resource.stored}", 1)
+                    res_y += 8
 
             # MAIN UI MAP
             pyxel.rectb(82, 16, 174, 134, 1)
