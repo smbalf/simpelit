@@ -1,9 +1,13 @@
 import pyxel
 import call_frame_methods
+import next_turn
+import calendar
+import player_keylogging
+
 
 WIDTH = 256
 HEIGHT = 256
-CAPTION = "The Simulation"
+CAPTION = player_keylogging.CAPTION
 BLACK = 0x191919  # 0
 WHITE = 0xf9f9f9  # 1
 RED = 0xff3232  # 2
@@ -20,6 +24,8 @@ class App:
         pyxel.init(WIDTH, HEIGHT, caption=CAPTION,
                    palette=[BLACK, WHITE, RED, BLUE, GREEN, PURPLE, YELLOW, GREY, BROWN])
 
+        player_keylogging.PlayerKeys.register_key_listeners()
+
         pyxel.run(self.update, self.draw)
 
     def update(self):
@@ -27,10 +33,12 @@ class App:
 
     def draw(self):
         pyxel.cls(0)
-        pyxel.text(1, 1, "(" + str(pyxel.mouse_x) + ", " + str(pyxel.mouse_y) + ")", 1)
+        pyxel.text(213, 18, "(" + str(pyxel.mouse_x) + ", " + str(pyxel.mouse_y) + ")", 1)
         pyxel.text(pyxel.mouse_x, pyxel.mouse_y, ".", 1)
 
         call_frame_methods.call_gameframes()
+        next_turn.next_turn()
+        calendar.Calendar.season()
 
 
 App()
