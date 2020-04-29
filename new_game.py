@@ -20,9 +20,9 @@ class NewGame:
             pyxel.rectb(50, 200, 160, 18, 1)
             pyxel.text(95, 206, "ENTER THE WORLD...", 1)
 
-            if 1 < len(player_keylogging.PlayerKeys.text) <= 18:
+            if 1 < len(player_keylogging.PlayerKeys.text) <= 17:
                 if pyxel.btnr(pyxel.MOUSE_LEFT_BUTTON) and pyxel.mouse_x > 90 and pyxel.mouse_y > 200:
-                    player.Player.name = player_keylogging.PlayerKeys.text
+                    player.Player.name = player_keylogging.PlayerKeys.text.upper()
                     player_keylogging.PlayerKeys.typing = False
                     NewGame.new_game_started = False
                     main_gui.MainUI.main_ui_active = True
