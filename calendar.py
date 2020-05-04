@@ -1,6 +1,7 @@
 class Calendar:
     week = 0
     year = 0
+    turn = 0
 
     winter = False
     spring = False
@@ -12,6 +13,8 @@ class Calendar:
 
     @classmethod
     def next_week(cls):
+        Calendar.turn += 1
+
         if Calendar.week < 52:
             Calendar.week += 1
 
@@ -47,3 +50,4 @@ class Calendar:
             Calendar.reset_seasons()
             Calendar.autumn = True
             Calendar.curr_season = Calendar.season_list[3]
+

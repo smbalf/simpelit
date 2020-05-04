@@ -4,7 +4,6 @@ import next_turn
 import calendar
 import player_keylogging
 
-
 WIDTH = 256
 HEIGHT = 256
 CAPTION = player_keylogging.CAPTION
@@ -34,11 +33,17 @@ class App:
     def draw(self):
         pyxel.cls(0)
         pyxel.text(213, 18, "(" + str(pyxel.mouse_x) + ", " + str(pyxel.mouse_y) + ")", 1)
-        pyxel.text(pyxel.mouse_x, pyxel.mouse_y, ".", 1)
 
         call_frame_methods.call_gameframes()
-        next_turn.next_turn()
         calendar.Calendar.season()
+        next_turn.Turns.next_turn()
+        next_turn.Turns.auto_status()
+        next_turn.textbox()
+
+        pyxel.text(pyxel.mouse_x, pyxel.mouse_y, ".", 2)
+        pyxel.text(213, 28, str(pyxel.frame_count), 2)
+
+
 
 
 App()
